@@ -11,14 +11,14 @@ public class Car {
 
     private String model;
 
-    private Integer service;
+    private Integer series;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Car(String model, Integer service) {
+    public Car(String model, Integer series) {
         this.model = model;
-        this.service = service;
+        this.series = series;
     }
 
     public Car() {
@@ -40,12 +40,12 @@ public class Car {
         this.model = model;
     }
 
-    public Integer getService() {
-        return service;
+    public Integer getSeries() {
+        return series;
     }
 
-    public void setService(Integer service) {
-        this.service = service;
+    public void setSeries(Integer service) {
+        this.series = service;
     }
 
     public User getUser() {
@@ -54,5 +54,14 @@ public class Car {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", service=" + series +
+                '}';
     }
 }
