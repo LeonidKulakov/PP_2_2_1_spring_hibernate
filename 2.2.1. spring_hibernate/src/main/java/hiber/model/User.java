@@ -1,6 +1,7 @@
 package hiber.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -24,19 +25,6 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, Car car) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.car = car;
-        /*
-        * Не нравится следующая строчка, есть мысль обернуть создание в метод (Например getInstance)
-        * и уже там прописать логику, но этот вариант мне тоже не нравится.
-        * В интернете предлагают сделать сеттер с возвращаемым значением,
-        * но такой вариант мне нравится не больше чем первые два
-        * */
-        car.setUser(this);
-    }
 
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -93,5 +81,22 @@ public class User {
                 ", email='" + email + '\'' +
                 ", car=" + car +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id)
+                && Objects.equals(firstName, user.firstName)
+                && Objects.equals(lastName, user.lastName)
+                && Objects.equals(email, user.email)
+                && Objects.equals(car, user.car);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, car);
     }
 }
