@@ -10,12 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 /*
-*
-* В проперти поменял hbm2ddl на create-drop (Это от себя, устал после каждого запуска "мусор" убирать)
-* Иквалс и хешкод в модели добавил
-* Конструктор с сеттером удалил
-* Реализовал связь через сеттер
-*
+* Конструкторы поставил в порядке возрастания числа параметров
+* Внес изменения во внедрение зависимостей:
+* 1) UserServiceImp - через ламбок (Зависимость подгрузил)
+* 2) UserDaoImp - через конструктор
+* 3) AppConfig - через сервис
 * */
 public class MainApp {
     public static void main(String[] args) throws SQLException {

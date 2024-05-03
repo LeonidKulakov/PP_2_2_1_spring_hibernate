@@ -17,13 +17,14 @@ public class Car {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Car() {
+    }
+
     public Car(String model, Integer series) {
         this.model = model;
         this.series = series;
     }
 
-    public Car() {
-    }
 
     public Long getId() {
         return id;
